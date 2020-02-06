@@ -13,8 +13,10 @@ public class AddressBookApplication {
      */
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
-        initAddressBookExercise( addressBook );
+        addressBook.init( "AddressInputDataFile.txt" );
+        addressBook.list();
     }
+
 
     /**
      * Creates two instances of AddressEntries and adds them to param ab using ab's add method
