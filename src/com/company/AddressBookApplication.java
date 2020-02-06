@@ -7,6 +7,10 @@ package com.company;
  */
 public class AddressBookApplication {
 
+    /**
+     * creates instance of addressBook and intializes it to contain two sorted entries
+     * @param args
+     */
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
         initAddressBookExercise( addressBook );

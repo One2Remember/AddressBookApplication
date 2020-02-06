@@ -10,14 +10,21 @@ public class AddressBook {
     // defines list of addressEntries
     List<AddressEntry> addressEntryList = new ArrayList<>();
 
-    // iterate through addressEntryList and for each item call toString and print
+
+    /**
+     * iterate through addressEntryList and for each item call toString and print
+     */
     public void list()
     {
         for (AddressEntry addressEntry : addressEntryList) {
             System.out.println(addressEntry.toString() + '\n');
         }
     }
-    // add entry to list
+
+    /**
+     * add entry to list
+     * @param entry
+     */
     public void add( AddressEntry entry )
     {
         int indexToAdd = 0;

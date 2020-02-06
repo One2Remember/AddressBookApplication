@@ -1,10 +1,15 @@
 package com.company;
 
+/**
+ * AddressEntry class, describes contents of a single AddressEntry for use in AddressBook
+ */
 public class AddressEntry {
     // All fields in AddressEntry are Strings with intuitive characteristics
     String firstName, lastName, street, city, state, zip, phone, email;
 
-    // default Constructor defines generic AddressEntry
+    /**
+     * default Constructor defines generic AddressEntry
+     */
     public AddressEntry()
     {
         firstName = "Allison";
@@ -16,7 +21,18 @@ public class AddressEntry {
         phone = "555-321-9876";
         email = "a.jennings.1994@gmail.com";
     }
-    // Constructor allows for initialization of all AddressEntry fields
+
+    /**
+     * Constructor allows for initialization of all AddressEntry fields
+     * @param fn
+     * @param ln
+     * @param str
+     * @param ci
+     * @param sta
+     * @param zc
+     * @param pn
+     * @param em
+     */
     public AddressEntry( String fn, String ln, String str, String ci, String sta, String zc, String pn, String em )
     {
         firstName = fn;
@@ -28,14 +44,18 @@ public class AddressEntry {
         phone = pn;
         email = em;
     }
-    // returns data from this object as neatly formatted String
+
+    /**
+     * returns data from this object as neatly formatted String
+     * @return
+     */
     public String toString()
     {
         return lastName + ", " + firstName + '\n' + street + '\n' + city + ", " + state + ", " + zip
                 + '\n' + phone + '\n' + email;
     }
 
-    //Setters defined below for all String fields of AddressEntry
+    // Setters defined below for all String fields of AddressEntry
     public void setFirstName( String str )
     {
         firstName = str;
