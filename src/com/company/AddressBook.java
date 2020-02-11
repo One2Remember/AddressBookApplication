@@ -1,3 +1,7 @@
+/**
+ * @author Emmanuel Gallegos
+ * @version "%I%, %G%"
+ */
 package com.company;
 
 import java.util.*; // for list class utility
@@ -8,13 +12,15 @@ Class AddressBook defines a list of AddressEntries as well as methods to
 add new entries, as well as list all current entries
  */
 public class AddressBook {
-    // defines list of addressEntries
+    /**
+     * Has an array list of AddressEntries
+     */
     List<AddressEntry> addressEntryList = new ArrayList<>();
 
     /**
      * reads in data from the specified file to initialize the addressEntryList
      * for use in the AddressBookApplication
-     * @param filename
+     * @param filename  name of file for initial address book data
      */
     void init(String filename)
     {
@@ -22,9 +28,10 @@ public class AddressBook {
         String firstName, lastName, street, city, state, zip, phone, email;
         boolean badData;    // bool to track if data has been properly read from file
 
-        /*
-        Try to open file and generate buffered reader to take input from filename
-        then read in data from file to initialize addressEntryList
+        /**
+         * Try to open file and generate buffered reader to take input from filename
+         * then read in data from file to initialize addressEntryList, catches and handles
+         * FileNotFound exception and IOException
          */
         try {
             // create new buffered reader from filename parameter
@@ -73,7 +80,7 @@ public class AddressBook {
 
     /**
      * add entry to list
-     * @param entry
+     * @param entry adds entry to list in sorted position
      */
     public void add( AddressEntry entry )
     {

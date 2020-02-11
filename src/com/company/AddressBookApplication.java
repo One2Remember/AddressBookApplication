@@ -1,3 +1,8 @@
+/**
+ * @author Emmanuel Gallegos
+ * @version "%I%, %G%"
+ */
+
 package com.company;
 
 /**
@@ -8,8 +13,8 @@ package com.company;
 public class AddressBookApplication {
 
     /**
-     * creates instance of addressBook and intializes it to contain two sorted entries
-     * @param args
+     * creates instance of addressBook and initializes it to contain two sorted entries
+     * @param args  array of command line String arguments
      */
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
@@ -17,10 +22,9 @@ public class AddressBookApplication {
         addressBook.list();
     }
 
-
     /**
      * Creates two instances of AddressEntries and adds them to param ab using ab's add method
-     * @param ab
+     * @param ab    name of address book to initialize
      */
     public static void initAddressBookExercise( AddressBook ab )
     {
