@@ -3,16 +3,42 @@
  * @version "%I%, %G%"
  */
 package com.company;
-
 /**
  * AddressEntry class, describes contents of a single AddressEntry for use in AddressBook
  */
 public class AddressEntry {
     /**
-     *
+     * This stores the first name of the person at this address
      */
-    String firstName, lastName, street, city, state, zip, phone, email;
-
+    String firstName;
+    /**
+     * This stores the last name of the person at this address
+     */
+    String lastName;
+    /**
+     * This stores the street name of the person at this address
+     */
+    String street;
+    /**
+     * This stores the city name of the person at this address
+     */
+    String city;
+    /**
+     * This stores the state name of the person at this address
+     */
+    String state;
+    /**
+     * This stores the zip code of the person at this address
+     */
+    int zip;
+    /**
+     * This stores the phone number of the person at this address
+     */
+    String phone;
+    /**
+     * This stores the email address of the person at this address
+     */
+    String email;
     /**
      * default Constructor defines generic AddressEntry
      */
@@ -23,7 +49,7 @@ public class AddressEntry {
         street = "Monrovia Ave";
         city = "Cincinnati";
         state = "Washington";
-        zip = "97202";
+        zip = 97202;
         phone = "555-321-9876";
         email = "a.jennings.1994@gmail.com";
     }
@@ -39,7 +65,7 @@ public class AddressEntry {
      * @param pn    phone number
      * @param em    email address
      */
-    public AddressEntry( String fn, String ln, String str, String ci, String sta, String zc, String pn, String em )
+    public AddressEntry( String fn, String ln, String str, String ci, String sta, int zc, String pn, String em )
     {
         firstName = fn;
         lastName = ln;
@@ -56,12 +82,11 @@ public class AddressEntry {
      */
     public String toString()
     {
-        return lastName + ", " + firstName + '\n' + street + '\n' + city + ", " + state + ", " + zip
-                + '\n' + phone + '\n' + email;
+        return '\t' + lastName + ", " + firstName + "\n\t" + street + "\n\t" + city + ", " + state + ' '+ zip
+                + "\n\t" + phone + "\n\t" + email;
     }
 
     /**
-     *
      * @param str   first name
      */
     public void setFirstName( String str )
@@ -69,7 +94,6 @@ public class AddressEntry {
         firstName = str;
     }
     /**
-     *
      * @param str   last name
      */
     public void setLastName( String str )
@@ -78,7 +102,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @param str   street name
      */
     public void setStreet( String str )
@@ -87,7 +110,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @param str   city name
      */
     public void setCity( String str )
@@ -96,7 +118,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @param str   state name
      */
     public void setState( String str )
@@ -105,16 +126,14 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @param str   zip code
      */
-    public void setZip( String str )
+    public void setZip( int str )
     {
         zip = str;
     }
 
     /**
-     *
      * @param str   phone number
      */
     public void setPhone( String str )
@@ -123,7 +142,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @param str   email address
      */
     public void setEmail( String str )
@@ -132,7 +150,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return  first name
      */
     public String getFirstName()
@@ -141,7 +158,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return last name
      */
     public String getLastName()
@@ -150,7 +166,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return  street name
      */
     public String getStreet()
@@ -159,7 +174,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return  city name
      */
     public String getCity()
@@ -168,7 +182,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return  state name
      */
     public String getState()
@@ -177,16 +190,14 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return  zip code
      */
-    public String getZip()
+    public int getZip()
     {
         return zip;
     }
 
     /**
-     *
      * @return  phone number
      */
     public String getPhone()
@@ -195,7 +206,6 @@ public class AddressEntry {
     }
 
     /**
-     *
      * @return  email address
      */
     public String getEmail()

@@ -15,18 +15,50 @@ public class AddressBook {
     /**
      * Has an array list of AddressEntries
      */
-    List<AddressEntry> addressEntryList = new ArrayList<>();
+    ArrayList<AddressEntry> addressEntryList = new ArrayList<>();
 
     /**
-     * reads in data from the specified file to initialize the addressEntryList
-     * for use in the AddressBookApplication
-     * @param filename  name of file for initial address book data
+     * iterate through addressEntryList and for each item call toString and print
      */
-    void init(String filename)
+    public void list()
     {
-        // buffers for AddressEntry fields
-        String firstName, lastName, street, city, state, zip, phone, email;
-        boolean badData;    // bool to track if data has been properly read from file
+        for ( AddressEntry addressEntry : addressEntryList ) {
+            System.out.println( addressEntry.toString() + '\n' );
+        }
+    }
+
+    /**
+     * Takes last name (or first letters) and returns list of all entries that match parameter
+     * @param startOf_lastName partial or complete last name to find
+     * @return ArrayList containing all AddressEntries which match the parameter
+     */
+    public ArrayList<AddressEntry> find( String startOf_lastName )
+    {
+        // search until addressBook is exhausted and all matching entries have been found
+        ArrayList<AddressEntry> al = new ArrayList<AddressEntry>();
+        for( int i = 0; i < addressEntryList.size(); i++ )
+        {
+            // if match found, add to list
+            if( addressEntryList.get(i).lastName.startsWith( startOf_lastName ) )
+            {
+                al.add( addressEntryList.get(i) );
+            }
+        }
+        return al;
+    }
+
+    /**
+     * Reads in entries from file
+     * @param filename name of file to read entries from
+     * @return number of entries read
+     */
+    public int readFromFile( String filename )
+    {
+        // buffers to hold data
+        String firstName, lastName, street, city, state, strZip, phone, email;
+        int zip = 0;    // for storing integer zip value
+        int ct = 0;     // count of entries read
+        boolean badData = false;    // for determining eof
 
         /**
          * Try to open file and generate buffered reader to take input from filename
@@ -44,7 +76,8 @@ public class AddressBook {
                 street = br.readLine();
                 city = br.readLine();
                 state = br.readLine();
-                zip = br.readLine();
+                strZip = br.readLine();
+                zip = strZip == null ? 0 : Integer.parseInt(strZip);
                 phone = br.readLine();
                 email = br.readLine();
                 // detect if any fields have not been properly read (data is bad OR eof encountered)
@@ -53,28 +86,63 @@ public class AddressBook {
                         street == null ||
                         city == null ||
                         state == null ||
-                        zip == null ||
+                        zip == 0 ||
                         phone == null ||
                         email == null;
                 // if ALL fields have been read, use them to create a new AddressEntry and add it to the list
                 if( !badData )
                 {
                     add( new AddressEntry( firstName, lastName, street, city, state, zip, phone, email ) );
+                    ct++;
                 }
             } while( !badData );    // continue as long as there may be more data
-        } catch(FileNotFoundException fe) {
+        } catch( FileNotFoundException fe ) {
             System.out.println( "File not found: “+ args[0]" );
-        } catch (IOException e) {
+        } catch ( IOException e ) {
             System.out.println( "Can't read from file:" + filename );
         }
+        return ct;
     }
     /**
-     * iterate through addressEntryList and for each item call toString and print
+     * finds lastName, prompts user which they would like to remove (if necessary)
+     * ensures user is sure about choice before committing to removal
+     * @param lastName
      */
-    public void list()
+    public void remove( String lastName )
     {
-        for (AddressEntry addressEntry : addressEntryList) {
-            System.out.println(addressEntry.toString() + '\n');
+        int choice = 0;    // stores user choice if there are multiple matches
+        char yes_or_no = '\0';  // for storing if user wants to remove
+        Scanner in = new Scanner( System.in );  // for reading user input
+
+        // find all matches for last name param
+        ArrayList<AddressEntry> al = find( lastName );
+
+        // if there is more than one match ask user which they'd like to remove
+        if( al.size() > 1 )
+        {
+            System.out.println( "The following " + al.size() + " entries were found in the" +
+                    " address book, select number of\nentry you wish to remove: " );
+            for( int i = 0; i < al.size(); i++ )
+            {
+                System.out.println( i + 1 + ":" + al.get(i).toString());
+            }
+            choice = in.nextInt() - 1;
+        }
+
+        // ensure user is confident about removal
+        System.out.println( "Hit y to remove the following entry or n to return to main menu:\n"
+         + al.get(choice).toString());
+
+
+        // get user confirmation
+        yes_or_no = in.next().charAt(0);
+
+        // if user says yes, remove entry from list
+        if( yes_or_no == 'y' || yes_or_no == 'Y' )
+        {
+            addressEntryList.remove( al.get(choice) );
+            System.out.println( "You have successfully removed the " + al.get(choice).firstName + ' '
+                    + al.get(choice).lastName + " contact." );
         }
     }
 
@@ -84,14 +152,16 @@ public class AddressBook {
      */
     public void add( AddressEntry entry )
     {
+        /**
+         * index of where entry is to be inserted
+         */
         int indexToAdd = 0;
         /*
-        while we haven't fallen off array and our entry's last name is lexicographically greater than our
-        current search index's last name, advance to next index
+        * While we haven't fallen off array and our entry's last name is lexicographically greater than our
+        * current search index's last name, advance to next index
         */
         while( indexToAdd < addressEntryList.size() &&
-                entry.lastName.compareTo( addressEntryList.get( indexToAdd ).getLastName() ) > 0 )
-        {
+                entry.lastName.compareTo( addressEntryList.get( indexToAdd ).getLastName() ) > 0 ) {
             indexToAdd++;
         }
         /*
