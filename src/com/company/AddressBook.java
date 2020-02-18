@@ -15,13 +15,25 @@ public class AddressBook {
     /**
      * Has an array list of AddressEntries
      */
-    ArrayList<AddressEntry> addressEntryList = new ArrayList<>();
+    ArrayList<AddressEntry> addressEntryList;
 
     /**
+     * instantiates array list of address entries
+     */
+    AddressBook() {
+        addressEntryList = new ArrayList<>();
+    }
+    /**
      * iterate through addressEntryList and for each item call toString and print
+     * OR prints message if list is empty
      */
     public void list()
     {
+        if( addressEntryList.size() == 0 )
+        {
+            System.out.println( "List is empty!" );
+            return;
+        }
         for ( AddressEntry addressEntry : addressEntryList ) {
             System.out.print( addressEntry.toString() + '\n');
         }
