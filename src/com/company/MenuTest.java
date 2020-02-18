@@ -4,7 +4,9 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Test class for Menu
+ */
 public class MenuTest {
 
     Menu menu = new Menu(); // create menu object

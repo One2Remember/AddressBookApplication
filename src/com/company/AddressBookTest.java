@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+/**
+ * Test class for AddressBook
+ */
 public class AddressBookTest {
 
     AddressBook ab = new AddressBook(); // generic address book for testing

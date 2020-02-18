@@ -1,7 +1,9 @@
 package com.company;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Test class for AddressEntry
+ */
 public class AddressEntryTest {
 
     @org.junit.jupiter.api.Test

@@ -4,11 +4,14 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Test class for AddressBookApplication
+ */
 public class AddressBookApplicationTest {
 
     InputStream in;  // for generating fake stream of possible user data
     AddressBookApplication aba = new AddressBookApplication();  // for testing main
-
+    
     @org.junit.jupiter.api.Test
     void main() {
         // generate a fake null command (a single quit command)
