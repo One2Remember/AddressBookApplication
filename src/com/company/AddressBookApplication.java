@@ -11,7 +11,7 @@ import java.util.*;
  * the address book by creating two dummy entries and adding them to the book
  */
 public class AddressBookApplication {
-
+    private static AddressBook addressBook = new AddressBook();    // main object
     /**
      * creates instance of addressBook and uses Menu class methods to display menu
      * and read user input to manipulate Address Book Application until 'f' or 'F'
@@ -19,7 +19,6 @@ public class AddressBookApplication {
      * @param args  array of command line String arguments
      */
     public static void main(String[] args) {
-        AddressBook addressBook = new AddressBook();    // main object
         addressBook.readFromFile( "AddressInputDataFile.txt" ); // initialization
         AddressEntry entry; // for holding dummy entry for addition command
         Scanner in = new Scanner(System.in);    // for reading user input
@@ -60,7 +59,7 @@ public class AddressBookApplication {
                     str = Menu.prompt_State();
                     entry.setState(str);
                     // get phone number
-                    str = Menu.prompt_Telephone();
+                    str = Menu.prompt_Phone();
                     entry.setPhone(str);
                     // get email
                     str = Menu.prompt_Email();

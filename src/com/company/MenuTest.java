@@ -159,7 +159,7 @@ public class MenuTest {
     }
 
     @org.junit.jupiter.api.Test
-    void prompt_Telephone() {
+    void prompt_Phone() {
         String phone = "510-566-9569"; // for testing if input is properly returned on prompt
 
         // convert fake input to data for dummy input stream
@@ -167,14 +167,14 @@ public class MenuTest {
         // add fake input String into System.in stream
         System.setIn(in);
         // check that the input generated from String "510-566-9569" returns "510-566-9569" as expected
-        assertEquals( "510-566-9569", menu.prompt_Telephone() );
+        assertEquals( "510-566-9569", menu.prompt_Phone() );
 
         // convert fake input to data for dummy input stream
         in = new ByteArrayInputStream(phone.getBytes());
         // add fake input String into System.in stream
         System.setIn(in);
         // check that the input generated from String "510-566-9569" does not match "0"
-        assertFalse( "0" == menu.prompt_Telephone() );
+        assertFalse( "0" == menu.prompt_Phone() );
     }
 
     @org.junit.jupiter.api.Test

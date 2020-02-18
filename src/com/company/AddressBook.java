@@ -48,8 +48,8 @@ public class AddressBook {
     }
     /**
      * Reads in entries from file
-     * @param filename name of file to read entries from
-     * @return number of entries read
+     * @param filename : name of file to read entries from
+     * @return int : number of entries read
      */
     public int readFromFile( String filename )
     {
@@ -105,7 +105,7 @@ public class AddressBook {
     /**
      * finds lastName, prompts user which they would like to remove (if necessary)
      * ensures user is sure about choice before committing to removal
-     * @param lastName
+     * @param lastName : last name of entry to remove
      */
     public void remove( String lastName )
     {
@@ -146,7 +146,7 @@ public class AddressBook {
     }
     /**
      * add entry to list
-     * @param entry adds entry to list in sorted position
+     * @param entry is added to list in sorted position by last name then first name
      */
     public void add( AddressEntry entry )
     {

@@ -26,7 +26,7 @@ public class Menu {
      * e : List all entries in system
      * f : Quit
      * x : Default (invalid entry)
-     * @return char representing the user's choice
+     * @return char : user's choice
      */
     public static char getMenuChoice() {
         Scanner in = new Scanner( System.in );  // for reading user input
@@ -50,7 +50,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for first name
-     * @return string first name
+     * @return string : first name
      */
     public static String prompt_FirstName() {
         PRINT( "First Name: " );
@@ -60,7 +60,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for last name
-     * @return string
+     * @return string : last name
      */
     public static String prompt_LastName() {
         PRINT( "Last Name: " );
@@ -70,7 +70,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for street name
-     * @return string
+     * @return string : street name
      */
     public static String prompt_Street() {
         PRINT( "Street: " );
@@ -80,7 +80,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for city name
-     * @return string
+     * @return string : city name
      */
     public static String prompt_City() {
         PRINT( "City: " );
@@ -90,7 +90,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for state name
-     * @return string
+     * @return string : state name
      */
     public static String prompt_State() {
         PRINT( "State: " );
@@ -100,7 +100,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for zip code, validates input data type as int
-     * @return int
+     * @return int : zip code
      */
     public static int prompt_Zip() {
         PRINT( "ZIP Code: " );
@@ -109,11 +109,12 @@ public class Menu {
         while( ret == -1 )
         {
             try{
-                ret = in.nextInt();
+                ret = in.nextInt(); // read user input
             }
             catch( InputMismatchException n ) {
                 PRINT( "Invalid input, please enter an integer" );
-                ret = -1;
+                ret = -1;   // reset user choice
+                in.nextLine();  // clear input buffer
             }
         }
         return ret;
@@ -121,9 +122,9 @@ public class Menu {
 
     /**
      * Prints message to prompt for telephone number
-     * @return string
+     * @return string : phone number
      */
-    public static String prompt_Telephone() {
+    public static String prompt_Phone() {
         PRINT( "Telephone #: " );
         Scanner in = new Scanner( System.in );
         return in.nextLine();
@@ -131,7 +132,7 @@ public class Menu {
 
     /**
      * Prints message to prompt for email address
-     * @return string
+     * @return string : email address
      */
     public static String prompt_Email() {
         PRINT( "Email Address: " );
