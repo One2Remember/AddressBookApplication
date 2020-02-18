@@ -23,7 +23,7 @@ public class AddressBook {
     public void list()
     {
         for ( AddressEntry addressEntry : addressEntryList ) {
-            System.out.println( addressEntry.toString() + '\n' );
+            System.out.print( addressEntry.toString() + '\n');
         }
     }
 
@@ -39,14 +39,13 @@ public class AddressBook {
         for( int i = 0; i < addressEntryList.size(); i++ )
         {
             // if match found, add to list
-            if( addressEntryList.get(i).lastName.startsWith( startOf_lastName ) )
+            if( addressEntryList.get(i).getLastName().startsWith( startOf_lastName ) )
             {
                 al.add( addressEntryList.get(i) );
             }
         }
         return al;
     }
-
     /**
      * Reads in entries from file
      * @param filename name of file to read entries from
@@ -97,7 +96,7 @@ public class AddressBook {
                 }
             } while( !badData );    // continue as long as there may be more data
         } catch( FileNotFoundException fe ) {
-            System.out.println( "File not found: “+ args[0]" );
+            System.out.println( "File not found: " + filename );
         } catch ( IOException e ) {
             System.out.println( "Can't read from file:" + filename );
         }
@@ -141,11 +140,10 @@ public class AddressBook {
         if( yes_or_no == 'y' || yes_or_no == 'Y' )
         {
             addressEntryList.remove( al.get(choice) );
-            System.out.println( "You have successfully removed the " + al.get(choice).firstName + ' '
-                    + al.get(choice).lastName + " contact." );
+            System.out.println( "You have successfully removed the " + al.get(choice).getFirstName() + ' '
+                    + al.get(choice).getLastName() + " contact." );
         }
     }
-
     /**
      * add entry to list
      * @param entry adds entry to list in sorted position
@@ -161,7 +159,7 @@ public class AddressBook {
         * current search index's last name, advance to next index
         */
         while( indexToAdd < addressEntryList.size() &&
-                entry.lastName.compareTo( addressEntryList.get( indexToAdd ).getLastName() ) > 0 ) {
+                entry.getLastName().compareTo( addressEntryList.get( indexToAdd ).getLastName() ) > 0 ) {
             indexToAdd++;
         }
         /*
@@ -169,10 +167,10 @@ public class AddressBook {
         search according to first name as well
         */
         if( indexToAdd != addressEntryList.size() &&
-                entry.lastName.compareTo( addressEntryList.get( indexToAdd ).getLastName() ) == 0 )
+                entry.getLastName().compareTo( addressEntryList.get( indexToAdd ).getLastName() ) == 0 )
         {
             while( indexToAdd < addressEntryList.size() &&
-                    entry.firstName.compareTo( addressEntryList.get( indexToAdd ).getFirstName() ) > 0 )
+                    entry.getFirstName().compareTo( addressEntryList.get( indexToAdd ).getFirstName() ) > 0 )
             {
                 indexToAdd++;
             }

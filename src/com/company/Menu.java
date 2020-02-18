@@ -4,6 +4,7 @@
  */
 package com.company;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -15,6 +16,37 @@ public class Menu {
      * @param toPrint takes String and prints it to standard output with terminating newline character
      */
     private static void PRINT( String toPrint ) { System.out.println( toPrint ); }
+
+    /**
+     * Displays the main menu and returns user's choice from menu (case insensitive)
+     * a : Loading from file
+     * b : Adding an entry
+     * c : Remove entry from system
+     * d : Find an entry in the system
+     * e : List all entries in system
+     * f : Quit
+     * x : Default (invalid entry)
+     * @return char representing the user's choice
+     */
+    public static char getMenuChoice() {
+        Scanner in = new Scanner( System.in );  // for reading user input
+        char choice = 'x';  // for holding user choice
+        // display menu
+        PRINT( "******************************************************\n"
+                + "Please enter in your menu selection:\na) Loading from a file\n"
+        + "b) Addition\nc) Removal\nd) Find\ne) Listing\n\nf) Quit"
+        + "\n******************************************************\n");
+        // read user choice
+        choice = in.next().charAt(0);
+        // return user choice if valid, o/w return 'x'
+        return     choice == 'a' || choice == 'A'
+                || choice == 'b' || choice == 'B'
+                || choice == 'c' || choice == 'C'
+                || choice == 'd' || choice == 'D'
+                || choice == 'e' || choice == 'E'
+                || choice == 'f' || choice == 'F'
+                ?  Character.toLowerCase( choice ) : 'x';
+    }
 
     /**
      * Prints message to prompt for first name
@@ -67,13 +99,24 @@ public class Menu {
     }
 
     /**
-     * Prints message to prompt for zip code
+     * Prints message to prompt for zip code, validates input data type as int
      * @return int
      */
     public static int prompt_Zip() {
         PRINT( "ZIP Code: " );
         Scanner in = new Scanner( System.in );
-        return in.nextInt();
+        int ret = -1;   // default return value
+        while( ret == -1 )
+        {
+            try{
+                ret = in.nextInt();
+            }
+            catch( InputMismatchException n ) {
+                PRINT( "Invalid input, please enter an integer" );
+                ret = -1;
+            }
+        }
+        return ret;
     }
 
     /**

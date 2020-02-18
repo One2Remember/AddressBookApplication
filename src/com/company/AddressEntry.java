@@ -10,35 +10,35 @@ public class AddressEntry {
     /**
      * This stores the first name of the person at this address
      */
-    String firstName;
+    private String firstName;
     /**
      * This stores the last name of the person at this address
      */
-    String lastName;
+    private String lastName;
     /**
      * This stores the street name of the person at this address
      */
-    String street;
+    private String street;
     /**
      * This stores the city name of the person at this address
      */
-    String city;
+    private String city;
     /**
      * This stores the state name of the person at this address
      */
-    String state;
+    private String state;
     /**
      * This stores the zip code of the person at this address
      */
-    int zip;
+    private int zip;
     /**
      * This stores the phone number of the person at this address
      */
-    String phone;
+    private String phone;
     /**
      * This stores the email address of the person at this address
      */
-    String email;
+    private String email;
     /**
      * default Constructor defines generic AddressEntry
      */
@@ -46,7 +46,7 @@ public class AddressEntry {
     {
         firstName = "Allison";
         lastName = "Jennings";
-        street = "Monrovia Ave";
+        street = "123 Monrovia Ave";
         city = "Cincinnati";
         state = "Washington";
         zip = 97202;
