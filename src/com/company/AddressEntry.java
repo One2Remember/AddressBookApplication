@@ -82,7 +82,7 @@ public class AddressEntry {
      */
     public String toString()
     {
-        return '\t' + lastName + ", " + firstName + "\n\t" + street + "\n\t" + city + ", " + state + ' '+ zip
+        return lastName + ", " + firstName + "\n\t" + street + "\n\t" + city + ", " + state + ' '+ zip
                 + "\n\t" + phone + "\n\t" + email;
     }
 

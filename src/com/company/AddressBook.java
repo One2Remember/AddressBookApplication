@@ -34,8 +34,9 @@ public class AddressBook {
             System.out.println( "List is empty!" );
             return;
         }
-        for ( AddressEntry addressEntry : addressEntryList ) {
-            System.out.print( addressEntry.toString() + '\n');
+        for( int i = 0; i < addressEntryList.size(); i++ )
+        {
+            System.out.println( i + 1 + ".\t" + addressEntryList.get(i).toString() + '\n' );
         }
     }
 
@@ -182,7 +183,8 @@ public class AddressBook {
                 entry.getLastName().compareTo( addressEntryList.get( indexToAdd ).getLastName() ) == 0 )
         {
             while( indexToAdd < addressEntryList.size() &&
-                    entry.getFirstName().compareTo( addressEntryList.get( indexToAdd ).getFirstName() ) > 0 )
+                    entry.getFirstName().compareTo( addressEntryList.get( indexToAdd ).getFirstName() ) > 0 &&
+                    entry.getLastName().compareTo( addressEntryList.get( indexToAdd ).getLastName() ) == 0 )
             {
                 indexToAdd++;
             }
