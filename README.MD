@@ -1,6 +1,8 @@
 # AddressBookApplication
 **Emmanuel Gallegos - 2/4/2020**
 
+## SEE WIKI FOR PROJECT DESIGN
+
 **CSU East Bay - CS 401**
 
 This is the first assignment in CS401, which simulates an address book
